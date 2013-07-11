@@ -64,11 +64,6 @@ var clone = function(fn) {
     return fn.bind({});
 };
 
-var processURL = function(urlData) {
-    var str = urlData.toString();
-    return str;
-};
-
 var getURL = function(url) {
     rest.get(url).on('complete', function(result) {
   if (result instanceof Error) {
@@ -91,8 +86,6 @@ if(require.main == module) {
         .parse(process.argv);
     if(program.url) {
         getURL(program.url);
-        //var checkJsonURL = checkHtmlFile(getURL(program.url), program.checks);
-        //console.log(JSON.stringify(checkJsonURL, null, 4));
     }
     else {
         var checkJson = checkHtmlFile(program.file, program.checks);
